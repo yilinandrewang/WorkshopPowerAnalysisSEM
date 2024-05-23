@@ -1,10 +1,10 @@
-####### Conducting Power Analysis in Structural Equation Modeling ########
+###########  Power Analysis in Structural Equation Modeling ##############
 #                        Written by Y. Andre Wang                        #
-#                         Last update: 23/03/22                          #
+#                         Last update: 24/05/23                          #
 
-# This R script includes some operations that were used or references in
-# the workshop, held on 23/03/20. It is not written to be run from beginning
-# to end. Take what is useful for you.
+# This R script includes some operations that were used or referenced in
+# the workshop on Power Analysis in Structural Equation Modeling.
+# Take what is useful for you.
 
 
 # Prepare Packages --------------------------------------------------------
@@ -35,9 +35,16 @@ lamba
 
 # Using RMSEA to conduct power analysis to detect model misfit ------------
 
-# MacCallum-Browne-Sugawara approach
-semTools::findRMSEApower(rmsea0 = .05, rmseaA = .01, df = 149, n = 142)
-semTools::findRMSEAsamplesize(rmsea0 = .05, rmseaA = .01, df = 149, power = .8)
+# MacCallum-Browne-Sugawara approach: Calculate power
+findRMSEApower(
+  rmsea0 = .05, # RMSEA null (expected model fit)
+  rmseaA = .01, # RMSEA alternative (RMSEA threshold tested against)
+  df = 149, # model degrees of freedom
+  n = 142) # sample size
+
+# MacCallum-Browne-Sugawara approach: Calculate sample size
+findRMSEAsamplesize(rmsea0 = .05, rmseaA = .01, df = 149, 
+                    power = .8) # power level
 
 
 
